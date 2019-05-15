@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Holly</title>
+  
+  <subtitle>Holly Blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://alicebupt.github.io/"/>
+  <updated>2019-05-14T13:30:09.402Z</updated>
+  <id>https://alicebupt.github.io/</id>
+  
+  <author>
+    <name>Holly</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>&lt;Open Domain Question Answering Using Early Fusion of Knowledge Bases&gt;阅读笔记</title>
+    <link href="https://alicebupt.github.io/2019/05/14/new-article/"/>
+    <id>https://alicebupt.github.io/2019/05/14/new-article/</id>
+    <published>2019-05-14T11:52:46.000Z</published>
+    <updated>2019-05-14T13:30:09.402Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;题目：&lt;/strong&gt; Open Domain Question Answering Using Early Fusion of Knowledge Bases&lt;br&gt;and Text&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;来源：&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="NLP" scheme="https://alicebupt.github.io/categories/NLP/"/>
+    
+    
+      <category term="KBQA" scheme="https://alicebupt.github.io/tags/KBQA/"/>
+    
+      <category term="QA" scheme="https://alicebupt.github.io/tags/QA/"/>
+    
+      <category term="early fusion" scheme="https://alicebupt.github.io/tags/early-fusion/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://alicebupt.github.io/2019/05/14/hello-world/"/>
+    <id>https://alicebupt.github.io/2019/05/14/hello-world/</id>
+    <published>2019-05-14T09:27:56.971Z</published>
+    <updated>2019-05-14T09:27:56.971Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

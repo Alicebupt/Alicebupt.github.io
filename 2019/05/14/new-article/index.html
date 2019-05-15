@@ -1,186 +1,737 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
 <!DOCTYPE html>
-<html>
+<html class="html-loading">
+		
+
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      &lt;Open Domain Question Answering Using Early Fusion of Knowledge Bases&gt;阅读笔记 | Holly
+    
+  </title>
+  <meta name="author" content="Holly">
+  <meta name="keywords" content>
+  <meta name="description" content="Holly Blog">
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
 
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
   
-  <title>new article | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="new article">
-<meta property="og:url" content="http://yoursite.com/2019/05/14/new-article/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-14T11:52:46.868Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="new article">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">Home</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">Archive</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">Category</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">Tag</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">About</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">Gallery</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-new-article" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/14/new-article/" class="article-date">
-  <time datetime="2019-05-14T11:52:46.000Z" itemprop="datePublished">2019-05-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      new article
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/14/new-article/" data-id="cjvnqmi0x000174u75y3w76n3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2019/05/14/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">Catalog</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			Current post&nbsp;:&nbsp;《&lt;Open Domain Question Answering Using Early Fusion of Knowledge Bases&gt;阅读笔记》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">Home</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">Archive</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">Category</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">Tag</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">About</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">Gallery</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
 </nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
 
-  
-</article>
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
 
-  
-    
+		
+	 
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
-    </div>
-  </div>
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2019/05/14/new-article/" itemprop="url">
+		&lt;Open Domain Question Answering Using Early Fusion of Knowledge Bases&gt;阅读笔记
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/05/14/new-article/">new article</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/14/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+	Posted on
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+	<a href="/2019/05/14/new-article/" itemprop="url">
+		<time datetime="2019-05-14T11:52:46.000Z" itemprop="datePublished">
+	  		2019-05-14
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	Updated on
+
+	<a href="/2019/05/14/new-article/" itemprop="url">
+		<time datetime="2019-05-14T11:52:46.000Z" itemprop="dateUpdated">
+	  		2019-05-14
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+			
+	
+		<a href="/tags/KBQA/" class=" ">
+			KBQA
+		</a>
+	
+		<a href="/tags/QA/" class=" ">
+			QA
+		</a>
+	
+		<a href="/tags/early-fusion/" class=" ">
+			early fusion
+		</a>
+	
+		
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<p><strong>题目：</strong> Open Domain Question Answering Using Early Fusion of Knowledge Bases<br>and Text</p>
+<p><strong>来源：</strong> EMNLP2018</p>
+<p><strong>链接：</strong> <a href="https://link.zhihu.com/?target=https%3A//aclweb.org/anthology/D18-1455" target="_blank" rel="noopener"> https://  aclweb.org/anthology/D1  8-1455
+</a></p>
+<p><strong>源码：</strong> <a href="https://link.zhihu.com/?target=http%3A//github.com/OceanskySun/GraftNet" target="_blank" rel="noopener"> Github
+</a></p>
+<p><strong>首发：</strong> 转载请注明出处： <a href="https://zhuanlan.zhihu.com/bupt-pris731" target="_blank" rel="noopener"> 学习ML的皮皮虾 </a></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>开放域问答的任务是根据问题给出相应的答案，目前的模型已经可以从一个外部的知识库或者是维基百科非结构化的文本中寻找答案，也有人用一些方法将来自两个信息源的预测结果进行聚合，本文称之为后期融合，而本文关注的重点是早期融合，将与问题相关的KB实体和文本放在一起，然后训练单个模型提取答案。</p>
+<p>来自ACL2017的 <a href="https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1704.08384" target="_blank" rel="noopener"> Question answering on knowledge bases and text using universal<br>schema and memory networks.
+</a><br>这篇文章基于Key-Value Memory<br>Networks将KB三元组和文本片段分别编码放入记忆模块中，实现两个信息源的早期融合。但是本文作者认为这种方法忽略了KB中的实体与非结构化的文本之间的关联。</p>
+<h2 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h2><ol>
+<li>本文将KB实体和文本放入同一个子图，然后训练单个模型从子图中提取答案 </li>
+<li>本文基于图表示学习的方法，并对其进行了改进以适应QA任务：1）异构更新方法；2）定向传播以解决多跳问题 </li>
+</ol>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p><strong>Description</strong></p>
+<p>KB：  $\displaystyle K =(V,\varepsilon,R)$  ，其中  $\displaystyle V$  是实体集，<br>$\displaystyle R$  是关系集，  $\displaystyle \varepsilon$  是三元组  $\displaystyle<br>(s,r,o)$  集合，  $\displaystyle r\in R,s\in V,o\in V$</p>
+<p>文本语料库：  $\displaystyle D= \left\{ d_{1},… ,d_{|D|} \right\}$  ，每一项为一个句子，<br>$\displaystyle d_{i}=(w_{1},…,w_{|d_{i}|})$</p>
+<p>链接关系：  $\displaystyle L$  是  $\displaystyle (v,d_{p})$  的集合，表示从KB中的实体到文本的映射，<br>$\displaystyle L_{d}$  表示句子  $\displaystyle d$  中所有的可链接实体。</p>
+<p>任务：在给定问题  $\displaystyle q=(w_{1},…,w_{|q|})$  的条件下，从  $\displaystyle<br>G=(K,D,L)$  中选择答案  $\displaystyle \left\{ a \right\}_{q}$</p>
+<p>本文假设问题的答案是来自KB或者文本句子的实体。</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>从  $\displaystyle G$  中提取最可能包含答案的子图  $\displaystyle G_{q}$ </li>
+</ol>
+<p>2. 利用本文提出的模型在已知问题  $\displaystyle q$  的条件下学习子图中的节点表示，并判断每个节点是否属于答案。</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf6rumj20go07mgn1.jpg" alt></p>
+<p><strong>Retrieval</strong></p>
+<p>KB检索：从问题中提取实体集  $\displaystyle S_{q}$  ，使用PPR方法找到这些实体周围的Top E个实体以及它们之间的关系放入子图<br>$\displaystyle G_{q}$  中。</p>
+<p>文本检索：使用Wikipedia为语料，进行句子级的检索。首先用DrQA中的加权词袋模型检索5篇与问题最相关的文章，根据问题  $\displaystyle<br>q$  检索最相关的Top D个句子并将他们分别作为一个节点加入子图中。</p>
+<p>将KB和文本中的实体进行链接，生成新的子图  $\displaystyle G_{q}=(V_{q},\varepsilon_{q},R^{+})$<br>，其中  $\displaystyle V_{q}=\left\{ v_{1},…,v_{E} \right\} \cup \left\{<br>d_{1},…,d_{D} \right\}$  ，  $\displaystyle R^{+}=R \cup \left\{ r_{L}<br>\right\}$  ，  $\displaystyle \varepsilon_{q}=\left\{ (s,o,r)\in \varepsilon<br>:s,o\in V_{q},r\in R \right\} \cup \left\{ (v,d_{p},r_{L}):(v,d_{p})\in<br>L_{d},d\in V_{q} \right\}$</p>
+<p><strong>GRAFT-Nets</strong></p>
+<p>这个阶段的任务是判断子图中的每个节点是否属于答案，首先要学习子图中节点的表示，然后对节点是否属于答案进行二分类。</p>
+<p>之前图表示学习的过程是：</p>
+<ol>
+<li>初始化每个节点的表示  $\displaystyle h_{v}^{(0)}$  。 </li>
+<li>对于模型的每一层，更新节点的表示  $\displaystyle h_{v}^{(l)}=\phi (h_{v}^{(l-1)},\sum_{v’\in N_{r}(v)}{h_{v’}^{(l-1)}})$ </li>
+</ol>
+<p>与之前的图表示学习相比的不同之处在于：</p>
+<ol>
+<li>子图中节点是异构的，每个节点可能是KB中的实体，也可能是一句自然语言文本。 </li>
+<li>节点的表示需要根据问题（自然语言  $\displaystyle q$  ）来更新。 </li>
+</ol>
+<p><strong>异构更新：</strong></p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzfio08nj20go0760tg.jpg" alt></p>
+<p>对于实体节点，</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf6ku4j20ai04074f.jpg" alt></p>
+<p>$\displaystyle h_{v}^{(l-1)}$  ：上一层该节点的表示</p>
+<p>$\displaystyle h_{q}^{(l-1)}$  ：上一层的问题的表示</p>
+<p>$\displaystyle N_{r}(v)$  ：与当前节点相邻的节点，  $\displaystyle \alpha_{r}^{v’}$<br>attention权重，</p>
+<p>$\displaystyle M(v)$  ：  $\displaystyle \left\{ (d,p) \right\}$  ，与实体<br>$\displaystyle v$  相链接的文本及该实体在文本中的位置，  $\displaystyle H_{d,p}^{(l-1)}$<br>是实体在文本中的表示。</p>
+<p>对于文本节点，一行一行的更新</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf9f9bj20cd02p3yk.jpg" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf74rhj209w01mdfq.jpg" alt></p>
+<p>$\displaystyle L(d,p)$  ：所有指向句子  $\displaystyle d$  的  $\displaystyle p$<br>位置的实体的集合</p>
+<p><strong>根据问题</strong> $\displaystyle q$  <strong>更新</strong></p>
+<p>$\displaystyle q$  的表示：初始化  $\displaystyle<br>h_{q}^{(0)}=LSTM(w_{1}^{q},…,w_{|q|}^{q})<em>{|q|}\in R^{n}$  更新<br>$\displaystyle h</em>{q}^{(l)}=FFN(\sum_{v\in S_{q}}{h_{v}^{(l)}})$</p>
+<p>在更新实体节点时，根据问题  $\displaystyle q$  来调整相邻节点对该节点的影响</p>
+<p>1）计算注意力权重  $\displaystyle \alpha_{r}^{v’}$  时，  $\displaystyle<br>\alpha_{r}^{v’}=softmax(x_{r}^{T}h_{q}^{(l-1)})$  ，这使得对于该节点的表示更多的依赖于与问题相关的节点。</p>
+<p>2）在相邻节点的表示上，  $\displaystyle<br>\psi_{r}(h_{v’}^{(l-1)})=pr_{v’}^{(l-1)}FFN(x_{r},h_{v’}^{(l-1)})$</p>
+<p>为了实现从源节点到目标节点的多跳，  $\displaystyle pr_{v’}^{(l)}$  来衡量从来自问题的源节点到<br>$\displaystyle v’$  的路径的总权重，计算方式如下：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf9gz4j20cw04n74g.jpg" alt></p>
+<p>这个计算过程基于PageRank算法的思想。将来自问题的源节点的权重一跳一跳的向周边节点传播。</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf6qogj20cv04qjrg.jpg" alt></p>
+<p><strong>答案选择</strong></p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzgtja93j20bw01jweg.jpg" alt></p>
+<p>根据子图中每个节点的最终的表示进行二分类来选择出答案。</p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p><strong>Dataset</strong></p>
+<p>WikiMovies-10K：包含从<br>WikiMovies数据集中随机选择的10K训练集以及原始的测试集和验证集，并使用该数据集给出的KB和文本语料，用简单的匹配实现实体的链接，并且选择前50的实体和文本放入子图中，子图中答案的召回率有99.6%。</p>
+<p>WebQuestionsSP：包含4737个基于Freebase的实体的问句，被分为训练集3098、测试集1639。从Freebase中问题节点邻域选取500个实体，并从维基百科中选取前50条句子放入子图中。答案的召回率为94%。</p>
+<p>子图统计数据如下所示：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf6w02j20go02yaaj.jpg" alt></p>
+<p>为了模拟KB不完整的情况，还构建了来自上述两个数据集的其他三个数据集，将KB中事实的数量分别降采样至10%、30%、50%。</p>
+<p><strong>Result</strong></p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbfb21uj20go08ewge.jpg" alt></p>
+<p>从图中可以看出：</p>
+<p>1. GN模型的性能超过了所有的KV模型</p>
+<p>2. GN模型早期融合的效果要比后期聚合更好，而通过融合这两个模型可以得到所有模型中最好的效果。</p>
+<p>3. 当KB变得越来越完备的时候加入文本所带来的提升也在降低。</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf6vi3j20am0b30uj.jpg" alt></p>
+<p>上表展示了本文的模型与仅用KB或仅用文本的最好的模型之间的比较，本文的模型几乎都达到了最好的结果。</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>本文着重关注于使用文本和不完整的KB的QA任务，通过改造现有的数据集介绍了这个任务的几个基本问题，并且验证了早期融合比后期聚合效果更好。本文还提出了一个早期融合的模型，GRAFT-<br>Net，来对包含KB实体和文本的子图中的节点进行分类。模型建立在图表示学习的基础上并针对该任务做了相应的修改。</p>
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="http://ww1.sinaimg.cn/large/8362e879ly1g3163nx1adj20km06kaan.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">Related post</div>
+				<div>Comment</div>
+				<div>Share</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">To Top</a>
+		
+		
+			<a href="/2019/05/14/hello-world/" title="Hello World" rel="next">
+				Next post&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/05/14/hello-world/" title="Hello World">
+								Hello World			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 14日, 2019				
+							</p>
+							<p class="relate-post-content">
+								Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/05/14/hello-world/" title="Hello World">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Hello World">
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2019, content by Holly. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+		
+	<!-- set '1' to show motto in all pages! -->
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
 
 
 
-  </div>
-</body>
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
 </html>

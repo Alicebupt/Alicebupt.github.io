@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>&lt;Open Domain Question Answering Using Early Fusion of Knowledge Bases&gt;阅读笔记</title>
+      <link href="/2019/05/14/new-article/"/>
+      <url>/2019/05/14/new-article/</url>
+      
+        <content type="html"><![CDATA[<p><strong>题目：</strong> Open Domain Question Answering Using Early Fusion of Knowledge Bases<br>and Text</p><p><strong>来源：</strong> EMNLP2018</p><p><strong>链接：</strong> <a href="https://link.zhihu.com/?target=https%3A//aclweb.org/anthology/D18-1455" target="_blank" rel="noopener"> https://  aclweb.org/anthology/D1  8-1455</a></p><p><strong>源码：</strong> <a href="https://link.zhihu.com/?target=http%3A//github.com/OceanskySun/GraftNet" target="_blank" rel="noopener"> Github</a></p><p><strong>首发：</strong> 转载请注明出处： <a href="https://zhuanlan.zhihu.com/bupt-pris731" target="_blank" rel="noopener"> 学习ML的皮皮虾 </a></p><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>开放域问答的任务是根据问题给出相应的答案，目前的模型已经可以从一个外部的知识库或者是维基百科非结构化的文本中寻找答案，也有人用一些方法将来自两个信息源的预测结果进行聚合，本文称之为后期融合，而本文关注的重点是早期融合，将与问题相关的KB实体和文本放在一起，然后训练单个模型提取答案。</p><p>来自ACL2017的 <a href="https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1704.08384" target="_blank" rel="noopener"> Question answering on knowledge bases and text using universal<br>schema and memory networks.</a><br>这篇文章基于Key-Value Memory<br>Networks将KB三元组和文本片段分别编码放入记忆模块中，实现两个信息源的早期融合。但是本文作者认为这种方法忽略了KB中的实体与非结构化的文本之间的关联。</p><h2 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h2><ol><li>本文将KB实体和文本放入同一个子图，然后训练单个模型从子图中提取答案 </li><li>本文基于图表示学习的方法，并对其进行了改进以适应QA任务：1）异构更新方法；2）定向传播以解决多跳问题 </li></ol><h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p><strong>Description</strong></p><p>KB：  $\displaystyle K =(V,\varepsilon,R)$  ，其中  $\displaystyle V$  是实体集，<br>$\displaystyle R$  是关系集，  $\displaystyle \varepsilon$  是三元组  $\displaystyle<br>(s,r,o)$  集合，  $\displaystyle r\in R,s\in V,o\in V$</p><p>文本语料库：  $\displaystyle D= \left\{ d_{1},… ,d_{|D|} \right\}$  ，每一项为一个句子，<br>$\displaystyle d_{i}=(w_{1},…,w_{|d_{i}|})$</p><p>链接关系：  $\displaystyle L$  是  $\displaystyle (v,d_{p})$  的集合，表示从KB中的实体到文本的映射，<br>$\displaystyle L_{d}$  表示句子  $\displaystyle d$  中所有的可链接实体。</p><p>任务：在给定问题  $\displaystyle q=(w_{1},…,w_{|q|})$  的条件下，从  $\displaystyle<br>G=(K,D,L)$  中选择答案  $\displaystyle \left\{ a \right\}_{q}$</p><p>本文假设问题的答案是来自KB或者文本句子的实体。</p><p><strong>Solution</strong></p><ol><li>从  $\displaystyle G$  中提取最可能包含答案的子图  $\displaystyle G_{q}$ </li></ol><p>2. 利用本文提出的模型在已知问题  $\displaystyle q$  的条件下学习子图中的节点表示，并判断每个节点是否属于答案。</p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf6rumj20go07mgn1.jpg" alt></p><p><strong>Retrieval</strong></p><p>KB检索：从问题中提取实体集  $\displaystyle S_{q}$  ，使用PPR方法找到这些实体周围的Top E个实体以及它们之间的关系放入子图<br>$\displaystyle G_{q}$  中。</p><p>文本检索：使用Wikipedia为语料，进行句子级的检索。首先用DrQA中的加权词袋模型检索5篇与问题最相关的文章，根据问题  $\displaystyle<br>q$  检索最相关的Top D个句子并将他们分别作为一个节点加入子图中。</p><p>将KB和文本中的实体进行链接，生成新的子图  $\displaystyle G_{q}=(V_{q},\varepsilon_{q},R^{+})$<br>，其中  $\displaystyle V_{q}=\left\{ v_{1},…,v_{E} \right\} \cup \left\{<br>d_{1},…,d_{D} \right\}$  ，  $\displaystyle R^{+}=R \cup \left\{ r_{L}<br>\right\}$  ，  $\displaystyle \varepsilon_{q}=\left\{ (s,o,r)\in \varepsilon<br>:s,o\in V_{q},r\in R \right\} \cup \left\{ (v,d_{p},r_{L}):(v,d_{p})\in<br>L_{d},d\in V_{q} \right\}$</p><p><strong>GRAFT-Nets</strong></p><p>这个阶段的任务是判断子图中的每个节点是否属于答案，首先要学习子图中节点的表示，然后对节点是否属于答案进行二分类。</p><p>之前图表示学习的过程是：</p><ol><li>初始化每个节点的表示  $\displaystyle h_{v}^{(0)}$  。 </li><li>对于模型的每一层，更新节点的表示  $\displaystyle h_{v}^{(l)}=\phi (h_{v}^{(l-1)},\sum_{v’\in N_{r}(v)}{h_{v’}^{(l-1)}})$ </li></ol><p>与之前的图表示学习相比的不同之处在于：</p><ol><li>子图中节点是异构的，每个节点可能是KB中的实体，也可能是一句自然语言文本。 </li><li>节点的表示需要根据问题（自然语言  $\displaystyle q$  ）来更新。 </li></ol><p><strong>异构更新：</strong></p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzfio08nj20go0760tg.jpg" alt></p><p>对于实体节点，</p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf6ku4j20ai04074f.jpg" alt></p><p>$\displaystyle h_{v}^{(l-1)}$  ：上一层该节点的表示</p><p>$\displaystyle h_{q}^{(l-1)}$  ：上一层的问题的表示</p><p>$\displaystyle N_{r}(v)$  ：与当前节点相邻的节点，  $\displaystyle \alpha_{r}^{v’}$<br>attention权重，</p><p>$\displaystyle M(v)$  ：  $\displaystyle \left\{ (d,p) \right\}$  ，与实体<br>$\displaystyle v$  相链接的文本及该实体在文本中的位置，  $\displaystyle H_{d,p}^{(l-1)}$<br>是实体在文本中的表示。</p><p>对于文本节点，一行一行的更新</p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf9f9bj20cd02p3yk.jpg" alt></p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf74rhj209w01mdfq.jpg" alt></p><p>$\displaystyle L(d,p)$  ：所有指向句子  $\displaystyle d$  的  $\displaystyle p$<br>位置的实体的集合</p><p><strong>根据问题</strong> $\displaystyle q$  <strong>更新</strong></p><p>$\displaystyle q$  的表示：初始化  $\displaystyle<br>h_{q}^{(0)}=LSTM(w_{1}^{q},…,w_{|q|}^{q})<em>{|q|}\in R^{n}$  更新<br>$\displaystyle h</em>{q}^{(l)}=FFN(\sum_{v\in S_{q}}{h_{v}^{(l)}})$</p><p>在更新实体节点时，根据问题  $\displaystyle q$  来调整相邻节点对该节点的影响</p><p>1）计算注意力权重  $\displaystyle \alpha_{r}^{v’}$  时，  $\displaystyle<br>\alpha_{r}^{v’}=softmax(x_{r}^{T}h_{q}^{(l-1)})$  ，这使得对于该节点的表示更多的依赖于与问题相关的节点。</p><p>2）在相邻节点的表示上，  $\displaystyle<br>\psi_{r}(h_{v’}^{(l-1)})=pr_{v’}^{(l-1)}FFN(x_{r},h_{v’}^{(l-1)})$</p><p>为了实现从源节点到目标节点的多跳，  $\displaystyle pr_{v’}^{(l)}$  来衡量从来自问题的源节点到<br>$\displaystyle v’$  的路径的总权重，计算方式如下：</p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf9gz4j20cw04n74g.jpg" alt></p><p>这个计算过程基于PageRank算法的思想。将来自问题的源节点的权重一跳一跳的向周边节点传播。</p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf6qogj20cv04qjrg.jpg" alt></p><p><strong>答案选择</strong></p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzgtja93j20bw01jweg.jpg" alt></p><p>根据子图中每个节点的最终的表示进行二分类来选择出答案。</p><h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p><strong>Dataset</strong></p><p>WikiMovies-10K：包含从<br>WikiMovies数据集中随机选择的10K训练集以及原始的测试集和验证集，并使用该数据集给出的KB和文本语料，用简单的匹配实现实体的链接，并且选择前50的实体和文本放入子图中，子图中答案的召回率有99.6%。</p><p>WebQuestionsSP：包含4737个基于Freebase的实体的问句，被分为训练集3098、测试集1639。从Freebase中问题节点邻域选取500个实体，并从维基百科中选取前50条句子放入子图中。答案的召回率为94%。</p><p>子图统计数据如下所示：</p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf6w02j20go02yaaj.jpg" alt></p><p>为了模拟KB不完整的情况，还构建了来自上述两个数据集的其他三个数据集，将KB中事实的数量分别降采样至10%、30%、50%。</p><p><strong>Result</strong></p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbfb21uj20go08ewge.jpg" alt></p><p>从图中可以看出：</p><p>1. GN模型的性能超过了所有的KV模型</p><p>2. GN模型早期融合的效果要比后期聚合更好，而通过融合这两个模型可以得到所有模型中最好的效果。</p><p>3. 当KB变得越来越完备的时候加入文本所带来的提升也在降低。</p><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g2zzbf6vi3j20am0b30uj.jpg" alt></p><p>上表展示了本文的模型与仅用KB或仅用文本的最好的模型之间的比较，本文的模型几乎都达到了最好的结果。</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>本文着重关注于使用文本和不完整的KB的QA任务，通过改造现有的数据集介绍了这个任务的几个基本问题，并且验证了早期融合比后期聚合效果更好。本文还提出了一个早期融合的模型，GRAFT-<br>Net，来对包含KB实体和文本的子图中的节点进行分类。模型建立在图表示学习的基础上并针对该任务做了相应的修改。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> NLP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KBQA </tag>
+            
+            <tag> QA </tag>
+            
+            <tag> early fusion </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/05/14/hello-world/"/>
+      <url>/2019/05/14/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
