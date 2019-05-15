@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Hello World | Holly
+      《Discribing a Knowledge Base》阅读笔记 | Holly
     
   </title>
   <meta name="author" content="Holly">
@@ -158,7 +158,7 @@
 	<!-- Page title -->
 	<p>
 		
-			Current post&nbsp;:&nbsp;《Hello World》
+			Current post&nbsp;:&nbsp;《《Discribing a Knowledge Base》阅读笔记》
 		
 	</p>
 
@@ -275,8 +275,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/05/14/hello-world/" itemprop="url">
-		Hello World
+	<a href="/2018/11/19/discribing-a-knowledge-base-yue-du-bi-ji/" itemprop="url">
+		《Discribing a Knowledge Base》阅读笔记
 	</a>
 
 	</div>
@@ -289,9 +289,9 @@
 
 	Posted on
 
-	<a href="/2019/05/14/hello-world/" itemprop="url">
-		<time datetime="2019-05-14T09:27:56.971Z" itemprop="datePublished">
-	  		2019-05-14
+	<a href="/2018/11/19/discribing-a-knowledge-base-yue-du-bi-ji/" itemprop="url">
+		<time datetime="2018-11-18T18:45:24.000Z" itemprop="datePublished">
+	  		2018-11-19
 	  </time>
 	</a>
 	&nbsp;
@@ -307,9 +307,9 @@
 
 	Updated on
 
-	<a href="/2019/05/14/hello-world/" itemprop="url">
-		<time datetime="2019-05-14T09:27:56.971Z" itemprop="dateUpdated">
-	  		2019-05-14
+	<a href="/2018/11/19/discribing-a-knowledge-base-yue-du-bi-ji/" itemprop="url">
+		<time datetime="2018-11-18T18:45:24.000Z" itemprop="dateUpdated">
+	  		2019-05-15
 	  </time>
 	</a> 
 
@@ -318,7 +318,17 @@
 		</span>
 		<span>
 			<i class="fa fa-tags"></i>
-					
+			
+	
+		<a href="/tags/NLG/" class=" ">
+			NLG
+		</a>
+	
+		<a href="/tags/KB/" class=" ">
+			KB
+		</a>
+	
+		
 		</span>
 		
 		
@@ -328,23 +338,64 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+		<p>来源：INLG 2018</p>
+<p>论文链接：<a href="https://arxiv.org/pdf/1809.01797.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1809.01797.pdf</a></p>
+<p>源码链接：<a href="https://github.com/EagleW/Describing_a_Knowledge_Base" target="_blank" rel="noopener">https://github.com/EagleW/Describing_a_Knowledge_Base</a></p>
+<p>首发：转载请注明出处：学习ML的皮皮虾</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>本文的目标是自动化生成关于结构化知识库的自然语言描述，也就是自然语言生成任务。本文的输入 KB 格式如下所示：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31sypznjoj20ao08et9q.jpg" alt></p>
+<p>输出的自然语言描述如下所示：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31szgyl1yj20gg0b441z.jpg" alt></p>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><p>结构化KB的生成与创造性写作有本质上的区别，结构化知识的生成需要覆盖输入中的所有元素，并且要准确、连贯的描述这些元素之间的关联。</p>
+<p>基于语言模型的方法并不能将slot和对应的value对齐,所以经常会将值赋给错误的slot。它也会重复一些相同的slot值.<br>结构化KB的生成中很难捕捉不同的slot之间的依赖性。</p>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p>本文的模型以Encoder-Decoder模型为基础，以双向GRU做Encoder，以指针网络和两个attention机制构建了生成框架,该指针网络可以从输入KB中复制事实，两个注意力机制分别为：（i）slot-aware attention: 以捕获slot类型与其对应的value之间的关联; （ii）table-position self-attention: 以捕获相关slot之间的相互依赖性。</p>
+<p>模型图如下所示：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t0qyfkzj20f20dgjtc.jpg" alt></p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>本文将输入的结构化KB看作是一个三元组的列表，L = [(s_{1}, v_{1}, (r_{1}, \hat{r}<em>{1} )), …, (s</em>{n}, v_{n}, (r_{n}, \hat{r}<em>{n} ))] ，其中， s</em>{i} 是一个slot类型， v_{i} 是对应的value， (r_{n}, \hat{r}_{n} ) 表示该三元组在输入中的位置，包括前向和后向。模型的输出是一个段落 Y 。</p>
+<h4 id="编码器"><a href="#编码器" class="headerlink" title="编码器"></a>编码器</h4><p>本文在L上应用一个双向GRU encoder来生成隐藏状态 H = [h_{1}, h_{2}, …, h_{n}] ，其中 h_{i} 是 I_{i} 的一个隐层状态。 I_{i} = [s_{i}, v_{i}, r_{i}, \hat{r}_{i}] 。</p>
+<h4 id="解码器"><a href="#解码器" class="headerlink" title="解码器"></a>解码器</h4><p>Decoder是一个前向的GRU网络，其中隐层状态初始化为 h_{n} 。为了捕捉slot类型和它的value值之间的联系，在decoder端加入了slot-aware attention。在每个时间步长 t ，计算在输入序列上的注意力分布。对于每个输入 i ，给它赋一个注意力权重：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t1xksxrj208201pt8l.jpg" alt></p>
+<p>其中，其中 \tilde{h}^{t} 是第 t 步的隐藏状态。 s_{i} 和 v_{i} 分别是输入的 si和 vi 的嵌入表示。</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t36qmfdj202i00mgld.jpg" alt></p>
+<p>表示之前所有步的 \alpha_{t} 的和，表示 t 步之前所有的输入受到的总的关注度。将它作为单独的一项放入attention机制中，避免了重复关注同一位置，从而减少了产生重复文本。 \alpha_{t} 可以被认为是每个输入对生成第 t 个目标字的贡献。</p>
+<p>已知 \alpha_{t} 可以计算：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t4msi1dj204d01zjr7.jpg" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t4msicqj2072010dfo.jpg" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t4msodnj207r012a9w.jpg" alt></p>
+<p>为了捕捉slot之间的关联，受句子级self-attention捕捉连续的tokens之间的关系的启发，本文提出table position self-attention，并将其与slot-aware attention合并。</p>
+<p>在我们的任务中，由于输入中的大多数三元组按时间顺序组织，我们使用行索引 r 和反向行索引 \hat{r} 来表示输入KB中每个三元组的位置信息。对于每对slot s_{i} 和 s_{j} ，我们计算注意分数 f_{ij} 如下：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t5u0dl2j205p03sq2w.jpg" alt></p>
+<p>其中， W_{in} 、W_{out} 、 W_{g} 是可学习的参数。</p>
+<p>更新</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t6w6ogwj203e028jr7.jpg" alt></p>
+<p>其中，</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t73476dj203m021jr6.jpg" alt></p>
+<h4 id="结构生成器"><a href="#结构生成器" class="headerlink" title="结构生成器"></a>结构生成器</h4><p>传统的序列到序列模型仅通过从具有固定大小的词汇表中选择单词来预测目标序列。但是，在我们的任务中，我们将slot的值视为单个信息单元。受指针网络的启发，设计了一个结构感知生成器。</p>
+<p>我们首先获得所有输入slot值的attention分布 P_{source} 。计算结构感知门 p_{gen}\in[0, 1] 来灵活地选择是从固定的词表中选择一个词还是从输入中选择一个slot-value：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t829ewhj207o010dfn.jpg" alt></p>
+<p>其中， y^{t-1} 是对t-1时刻生成的token的向量表示， \sigma 是Sigmoid函数。</p>
+<p>得到：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t98pltmj207q015dfo.jpg" alt></p>
+<p>loss为：</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31t98ppb3j206n016mwz.jpg" alt></p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h4 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h4><p>结合Wikipedia dump 和Wikidata 创建了一个新的数据集，共收集了106216条数据</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31ta6w9osj20g50340sx.jpg" alt></p>
+<p>与之前用来评估生成效果的Wikibio 数据集相比，本文创建的数据集包含多个句子以尽可能的覆盖输入的结构化KB中的多个事实。这使得生成任务更具挑战性和实用性。</p>
+<h4 id="评估指标"><a href="#评估指标" class="headerlink" title="评估指标"></a>评估指标</h4><p>除了标准的 BLEU，METEOR 和 ROUGE 度量，本文还提出了一种基于KB重建的度量方式，即对于每个实体，从生成的段落中重建KB，然后将其与输入KB进行比较计算准确率、召回率和F值。</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31tanzfsej20i404tgmr.jpg" alt></p>
+<h4 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h4><p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31tc2pikgj20gf0443yw.jpg" alt></p>
+<p>表5体现了本文模型在基础的指标上有了更好的表现。从表6和表7可以看出，加入两个attention机制的模型在基于重建KB的评价指标上也有更好的表现。</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31tci1o8ej2088097q3t.jpg" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879ly1g31tcs8c6nj20gj06x75r.jpg" alt></p>
+<p>由图可见，attention成功的捕捉到了slot之间的相互关联。</p>
+<h4 id="仍存在的问题："><a href="#仍存在的问题：" class="headerlink" title="仍存在的问题："></a>仍存在的问题：</h4><p>在人物实体上的召回率更低，是因为对于一些比较少见的slot类型，没有足够的训练数据。</p>
+<p>生成器会输出一些错误的事实，尤其是在时间的表达上。比如：生成器缺乏一些常识，比如它可能会生成“Aleksei Gasilin ( born 1 March 1996 ) is a Russian Association football Forward (association football). He made his professional debut in the Russian Second Division in 1992 for Russia national under-19 football team.”</p>
+<p>本文的方法有时无法检测到人的性别，从而产生不正确的代词。 对于动物实体，人类作家能够详细阐述。 而本文的系统的输出只会覆盖输入KB中的信息。</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>本文第一次提出了一个表格位置attention，并证明它可以有效地捕获事实之间的相互依赖性。 这种新方法在KB重建时实现了2.5％-7.8％的F值增益。本文提出了基于KB重建的度量方式，从输出语句中提取KB并将其与输入KB进行比较，来衡量在生成器的输出中有多少事实是被正确表达了的。另外，本文还创建了一个大型KB数据集,包含对106216个实体的自然语言描述。</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+	<div id="current-post-cover" data-scr="http://ww1.sinaimg.cn/large/8362e879ly1g31st1y6cuj20i404tgmr.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -359,14 +410,10 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">To Top</a>
 		
-			<a href="/2019/05/14/new-article/" title="<Open Domain Question Answering Using Early Fusion of Knowledge Bases>阅读笔记" rel="prev">
+			<a href="/2019/05/14/hello-world/" title="Hello World" rel="prev">
 				&laquo;Pre post
 			</a>
 		
-		
-			<a href="/2018/11/19/discribing-a-knowledge-base-yue-du-bi-ji/" title="《Discribing a Knowledge Base》阅读笔记" rel="next">
-				Next post&raquo;
-			</a>
 			
 	</span>
 
@@ -410,25 +457,22 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/11/19/discribing-a-knowledge-base-yue-du-bi-ji/" title="《Discribing a Knowledge Base》阅读笔记">
-								《Discribing a Knowledge Base》阅读笔记			
+							<a class="relate-post-title" href="/2019/05/14/hello-world/" title="Hello World">
+								Hello World			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								十一月 19日, 2018				
+								五月 14日, 2019				
 							</p>
 							<p class="relate-post-content">
-								来源：INLG 2018
-论文链接：https://arxiv.org/pdf/1809.01797.pdf
-源码链接：https://github.com/EagleW/Describing_a_Knowledge_Base
-首发：...
+								Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2018/11/19/discribing-a-knowledge-base-yue-du-bi-ji/" title="《Discribing a Knowledge Base》阅读笔记">				
+							<a href="/2019/05/14/hello-world/" title="Hello World">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="http://ww1.sinaimg.cn/large/8362e879ly1g31st1y6cuj20i404tgmr.jpg" alt="《Discribing a Knowledge Base》阅读笔记">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Hello World">
 							</a>
 						</div>
 					</li>											
