@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://alicebupt.github.io/"/>
-  <updated>2019-05-14T13:30:09.402Z</updated>
+  <updated>2019-05-15T02:32:40.019Z</updated>
   <id>https://alicebupt.github.io/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Discribing a Knowledge Base》阅读笔记</title>
+    <link href="https://alicebupt.github.io/2019/05/15/discribing-a-knowledge-base-yue-du-bi-ji/"/>
+    <id>https://alicebupt.github.io/2019/05/15/discribing-a-knowledge-base-yue-du-bi-ji/</id>
+    <published>2019-05-15T02:32:39.000Z</published>
+    <updated>2019-05-15T02:32:40.019Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>&lt;Open Domain Question Answering Using Early Fusion of Knowledge Bases&gt;阅读笔记</title>
