@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Hello World | Holly
+      &lt;Zero-Shot Dialog Generation with Cross-Domain Latent Actions&gt;阅读笔记 | Holly
     
   </title>
   <meta name="author" content="Holly">
@@ -156,7 +156,7 @@
 	<!-- Page title -->
 	<p>
 		
-			Current post&nbsp;:&nbsp;《Hello World》
+			Current post&nbsp;:&nbsp;《&lt;Zero-Shot Dialog Generation with Cross-Domain Latent Actions&gt;阅读笔记》
 		
 	</p>
 
@@ -257,8 +257,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2018/11/18/hello-world/" itemprop="url">
-		Hello World
+	<a href="/2019/03/25/zero-shot-dialog-generation-with-cross-domain-latent-actions-yue-du-bi-ji/" itemprop="url">
+		&lt;Zero-Shot Dialog Generation with Cross-Domain Latent Actions&gt;阅读笔记
 	</a>
 
 	</div>
@@ -271,9 +271,9 @@
 
 	Posted on
 
-	<a href="/2018/11/18/hello-world/" itemprop="url">
-		<time datetime="2018-11-17T18:45:24.000Z" itemprop="datePublished">
-	  		2018-11-18
+	<a href="/2019/03/25/zero-shot-dialog-generation-with-cross-domain-latent-actions-yue-du-bi-ji/" itemprop="url">
+		<time datetime="2019-03-25T07:44:18.000Z" itemprop="datePublished">
+	  		2019-03-25
 	  </time>
 	</a>
 	&nbsp;
@@ -289,8 +289,8 @@
 
 	Updated on
 
-	<a href="/2018/11/18/hello-world/" itemprop="url">
-		<time datetime="2018-11-17T18:45:24.000Z" itemprop="dateUpdated">
+	<a href="/2019/03/25/zero-shot-dialog-generation-with-cross-domain-latent-actions-yue-du-bi-ji/" itemprop="url">
+		<time datetime="2019-03-25T07:44:18.000Z" itemprop="dateUpdated">
 	  		2019-05-15
 	  </time>
 	</a> 
@@ -300,7 +300,17 @@
 		</span>
 		<span>
 			<i class="fa fa-tags"></i>
-					
+			
+	
+		<a href="/tags/Zero-Shot/" class=" ">
+			Zero-Shot
+		</a>
+	
+		<a href="/tags/Task-oriented-Dialogue/" class=" ">
+			Task-oriented Dialogue
+		</a>
+	
+		
 		</span>
 		
 		
@@ -310,23 +320,30 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+		<p><strong>论文题目：</strong> Zero-Shot Dialog Generation with Cross-Domain Latent Actions</p>
+<p><strong>来源：</strong> <a href="https://arxiv.org/abs/1805.04803" target="_blank" rel="noopener"> SIGDIAL2018 best paper</a> </p>
+<p><strong>源码：</strong> <a href="https://link.zhihu.com/?target=https%3A//github.com/snakeztc/NeuralDialog-ZSDG" target="_blank" rel="noopener"> snakeztc/NeuralDialog-ZSDG</a></p>
+<p><strong>转载请注明：</strong> <a href="https://zhuanlan.zhihu.com/c_174041386" target="_blank" rel="noopener"> 明光桥北磕盐记 </a></p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a><strong>介绍</strong></h2><p>端到端的对话模型是在闲聊和任务型对话上都是目前最有效的学习对话策略的方式，但这两个领域都存在一个问题就是数据的匮乏。目前的一些模型都只有在数据丰富的领域才能适用，文章的主要思想在于利用领域描述信息来将对话系统推广到一个新的领域，文章认为对于领域专家来说，将领域内的一些知识表达为针对领域的描述要比用一些对话实例来进行表达更佳有效和自然，因为编对话的同时会加入许多很多领域都会共享的对话内容，这对于某个特定领域独特的属性是无关的。</p>
+<p>本文主要解决的问题是如何在新领域数据量少的情况下进行对话系统的迁移。根据本文的方法，对于新领域仅需要领域的描述而没有可用的训练数据。本文在新的合成对话数据集和现有的人-<br>人对话数据集上评估了提出的方法。结果表明，本文的方法在学习对话模型方面具有优越的性能，可以快速地将其行为适应新的领域，并提出了未来的研究方向。</p>
+<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a><strong>相关工作</strong></h2><p>zeroshot learning：迁移学习中的内容，Zero-data learning of new tasks.（Hugo Larochelle,<br>Dumitru Erhan, and Yoshua Bengio<br>2008）这篇论文提出用零次学习做分类，重点是如何对未出现的label进行分类。一种常见的方法是将类标签表示为属性而不是类的索引，最新的工作将这种方法改进使用神经网络，来将标签和输入数据映射到一个联合的嵌入空间然后再进行预测。除了分类任务以外，这种方式还被应用到机器人任务泛化方面，使得机器人可以执行在训练过程中没有涉及的任务。在这个任务下，通过演示或一系列指令来描述任务，并且系统需要学习将指令分解为先前学习的技能。在RNN网络中，生成OOV词也是ZSL的一种形式，OOV词就是未出现的标签。之前的工作使用delexicalized标签和copy机制来使得RNN的输出中包含OOOV词。</p>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a><strong>Model</strong></h2><p><strong>领域描述</strong></p>
+<p>文章提出了seed response(SR)的概念来作为领域的描述。在领域d内，领域描述被定义为  $\displaystyle<br>\{x^{(i)},a^{(i)},d\}_{seed}$<br>，其中x是SR，a是其注释。仅用x来推断不同领域中回复关系可能很困难，所以添加一个注释来帮助理解。例如在天气的任务型领域中，SR可能是The weather<br>in New York is raining，注释是[Inform，loc=New<br>York，type=rain]。由于SR假设其他的话语级内容都可以在两个领域中共享，所以在此只需要学习句子级的知识。</p>
+<p><strong>Action Matching Encoder-Decoder</strong></p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879gy1g322hnx893j20t00cbq50.jpg" alt></p>
+<p>模型结构图</p>
+<p>将传统的Encoder-Decoder框架进行了改进，在解码端加入了copy机制和指针网络。</p>
+<p>训练数据分为两个部分：领域描述和对话数据，其中领域描述用  $\displaystyle \left\{ x,a,d \right\}$<br>来表示，对话数据用  $\displaystyle \left\{ c,x,d \right\}$  来表示，其中  $\displaystyle c$<br>表示对话历史上下文，  $\displaystyle x$  表示生成的回复，  $\displaystyle d$  代表领域。对于<br>$\displaystyle x,a$  都采用双向GRU编码，对于  $\displaystyle c$  ，使用分层循环编码器（hierarchical<br>recurrent encoder ，HRE）进行编码。</p>
+<p>训练过程包括两个部分，首先根据  $\displaystyle L_{dd}$  来更新R和  $\displaystyle F^d$<br>中的参数，其中第一部分在训练在所有领域中从  $\displaystyle z_a$<br>生成x的部分，第二部分在训练R将x和a编码的部分(R是recognition network)。除此之外，仅仅优化  $\displaystyle<br>L_{dd}$  无法保证F预测的  $\displaystyle z_c $  能与  $\displaystyle z_x$  和<br>$\displaystyle z_a$  相关，所以另外优化  $\displaystyle L_{dialog}$  ，其中第二项的优化目标是<br>$\displaystyle z_{c}^{d} \approx z_{x}^{d}$  ，这一步类似于VAE中使用的正则化项。</p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879gy1g322jlgzfdj209m021aa0.jpg" alt><br><img src="http://ww1.sinaimg.cn/large/8362e879gy1g322jlmeo6j209s01x749.jpg" alt></p>
+<h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a><strong>Dataset</strong></h2><p><strong>SimDial Data：</strong> 文章的另一个贡献是构造了一个数据集，这个数据集是由一个多领域的对话生成器生成，它可以将配置复杂的slot-<br>filling转化为真实对话。文章用SimDial生成了六个领域的对话：restaurant，movie，bus，restaurant-<br>slot，restaurant-style，weather。这种设定是考虑以下几个方面来为ZSDG进行评估：Restaurant(in<br>domain)、Restaurant-slot (unseen slots)、Restaurant-style (unseen NLG)、Movie<br>(new domain)。最后从每个领域中随机选择100个独特的句子作为SR。</p>
+<p><strong>Stanford Multi-Domain Dialog Data：</strong> 包括三个领域的内容，对话两方分别是人类司机和AI助手。<br><strong>Experiments and Results</strong></p>
+<p><img src="http://ww1.sinaimg.cn/large/8362e879gy1g322kn46fhj20a20exmyz.jpg" alt><br><img src="http://ww1.sinaimg.cn/large/8362e879gy1g322kn3lo1j209x088dgo.jpg" alt></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a><strong>Conclusion</strong></h2><p>文章介绍的ZSDG系统，对神经网络中的领域泛化进行了一些处理。虽然文章讨论的内容被限定在slot-<br>filling的对话领域，但这为以后的研究提供了一些思路，例如如何降低学习不同领域行为之间潜在的对齐成本等。这一系统的成功的确是向更通用的agent迈出的重要一步。</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+	<div id="current-post-cover" data-scr="http://ww1.sinaimg.cn/large/8362e879gy1g322hnx893j20t00cbq50.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -341,10 +358,14 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">To Top</a>
 		
-			<a href="/2018/11/19/discribing-a-knowledge-base-yue-du-bi-ji/" title="《Discribing a Knowledge Base》阅读笔记" rel="prev">
+			<a href="/2019/05/14/new-article/" title="<Open Domain Question Answering Using Early Fusion of Knowledge Bases>阅读笔记" rel="prev">
 				&laquo;Pre post
 			</a>
 		
+		
+			<a href="/2019/03/04/ji-yu-shun-xu-zhu-yi-li-ji-zhi-wang-luo-de-duan-dao-duan-ying-da-xuan-ze-he-duo-lun-dui-hua-zhong-da-an-xuan-ze-de-qian-yi-xue-xi-fang-fa-bi-jiao-yue-du-bi-ji/" title="《基于顺序注意力机制网络的端到端应答选择》和《多轮对话中答案选择的迁移学习方法比较》阅读笔记" rel="next">
+				Next post&raquo;
+			</a>
 			
 	</span>
 
@@ -381,31 +402,6 @@
 							<a href="/2019/05/14/new-article/" title="<Open Domain Question Answering Using Early Fusion of Knowledge Bases>阅读笔记">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="http://ww1.sinaimg.cn/large/8362e879ly1g3163nx1adj20km06kaan.jpg" alt="&lt;Open Domain Question Answering Using Early Fusion of Knowledge Bases&gt;阅读笔记">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/03/25/zero-shot-dialog-generation-with-cross-domain-latent-actions-yue-du-bi-ji/" title="<Zero-Shot Dialog Generation with Cross-Domain Latent Actions>阅读笔记">
-								<zero-shot dialog generation with cross-domain latent actions>阅读笔记			
-							</zero-shot></a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								三月 25日, 2019				
-							</p>
-							<p class="relate-post-content">
-								论文题目： Zero-Shot Dialog Generation with Cross-Domain Latent Actions
-来源：  SIGDIAL2018 best paper 
-源码：  snakeztc/NeuralD...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/03/25/zero-shot-dialog-generation-with-cross-domain-latent-actions-yue-du-bi-ji/" title="<Zero-Shot Dialog Generation with Cross-Domain Latent Actions>阅读笔记">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="http://ww1.sinaimg.cn/large/8362e879gy1g322hnx893j20t00cbq50.jpg" alt="&lt;Zero-Shot Dialog Generation with Cross-Domain Latent Actions&gt;阅读笔记">
 							</a>
 						</div>
 					</li>											
@@ -458,6 +454,29 @@
 							<a href="/2018/11/19/discribing-a-knowledge-base-yue-du-bi-ji/" title="《Discribing a Knowledge Base》阅读笔记">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="http://ww1.sinaimg.cn/large/8362e879ly1g31st1y6cuj20i404tgmr.jpg" alt="《Discribing a Knowledge Base》阅读笔记">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2018/11/18/hello-world/" title="Hello World">
+								Hello World			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 18日, 2018				
+							</p>
+							<p class="relate-post-content">
+								Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2018/11/18/hello-world/" title="Hello World">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Hello World">
 							</a>
 						</div>
 					</li>											
